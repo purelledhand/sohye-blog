@@ -39,8 +39,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///sohye_blog'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sohyeblog',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
 }
+
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # URLS
@@ -63,7 +71,6 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -72,6 +79,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'sohye_blog.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
+    'sohye_blog.images.apps.ImagesConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -231,7 +239,6 @@ ADMINS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
-
 # django-allauth
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
@@ -245,7 +252,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_ADAPTER = 'sohye_blog.users.adapters.AccountAdapter'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = 'sohye_blog.users.adapters.SocialAccountAdapter'
-
 
 # Your stuff...
 # ------------------------------------------------------------------------------
