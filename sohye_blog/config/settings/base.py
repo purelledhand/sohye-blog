@@ -71,10 +71,10 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'rest_framework',
+    'allauth', # registration
+    'allauth.account', # registration
+    'allauth.socialaccount', # registration
+    'rest_framework', # REST framework
 ]
 LOCAL_APPS = [
     'sohye_blog.users.apps.UsersAppConfig',
@@ -234,7 +234,7 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 ADMIN_URL = 'admin/'
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = [
-    ("""Sohye Choi""", 'purelledhand@gmail.com'),
+    ("Sohye Choi", 'purelledhand@gmail.com'),
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
